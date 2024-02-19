@@ -14,9 +14,12 @@ jobs:
             - run: echo "Workflow is now ready to test your code on runner"
             - name: List the files in repository
               run: ls -lrta
-            - name: Excuting the Schell Script
-              run: |
-               chmod +x ascii-script.sh
-               ./ascii-script.sh
+            - name: Making ascii-script.sh executable
+              run: sudo chmod +x ascii-script.sh
+            - name: Check the file permission on ascii-script.sh
+              run: ls -l ascii-script.sh
+            - name: Executing Shell script.
+              run:  ./ascii-script.sh       
+                
 
 
