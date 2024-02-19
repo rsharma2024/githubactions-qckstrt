@@ -1,1 +1,26 @@
+name: GitHub Actions 'Generating ASCII Art' Demo
+run-name: ${{ github.actor}} is testing out GitHub Actions - Generate ASCII Art
+on: [push]
+jobs:
+  Explore-GitHub-Actions-Generate-ASCII-Art-Job:
+    runs-on: ubuntu-latest
+    steps:
+    - run: echo "This Job was automatically triggered by a ${{ github.event_name }} event"
+    - run: echo "This job is now running on a ${{ runner.os }} server hosted by GitHub!!"
+    - run: echo "The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
+    - name: 'Checkout repository code'
+      uses: actions/checkout@v4
+    - run: echo "The ${{ github.repository }} repository has been cloned to runner."
+    - name: Install Cowsay package on runner
+      run: sudo apt-get install cowsay -y
+    - name: Execute Cowsay Command
+      run: cowsay -f  dragon "Run for cover, I am dragon....RAWR" >> dragon.txt
+    - name: Check if file exist
+      run: grep -i "dragon" dragon.txt
+    - name: Read the file
+      run: cat dragon.txt
+    - name: List the Repository
+      run: ls -lrta
+    - run:  echo "The job status is ${{ job.status }}" 
+
 
