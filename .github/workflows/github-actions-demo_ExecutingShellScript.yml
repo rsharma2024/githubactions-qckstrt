@@ -15,6 +15,6 @@ jobs:
             - name: List the files in repository
               run: ls -lrta
             - name: Excuting the Schell Script
-              run: ./ascii.script.sh
+              run: ./ascii-script.sh
 
 
