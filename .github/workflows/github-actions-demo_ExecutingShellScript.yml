@@ -19,7 +19,7 @@ jobs:
             - name: Check the file permission on ascii-script.sh
               run: ls -l ascii-script.sh
             - name: Executing Shell script.
-              run:  ./ascii-script.sh       
+              run:  bash ${GITHUB_WORKSPACE}/ascii-script.sh       
                 
 
 
