@@ -14,9 +14,7 @@ jobs:
     - name: Install Cowsay package on runner
       run: sudo apt-get install cowsay -y
     - name: Execute Cowsay Command
-      run: cowsay -f  dragon "Run for cover, I am dragon....RAWR" >> dragon.txt
-    - name: Check if file exist
-      run: grep -i "dragon" dragon.txt
+      run: cowsay I love Linux >> dragon.txt
     - name: Read the file
       run: cat dragon.txt
     - name: List the Repository
