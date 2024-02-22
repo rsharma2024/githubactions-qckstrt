@@ -39,5 +39,7 @@ jobs:
               with:
                 name: cowsay
                 path: cowsay.txt
+            - name: List the artifactory
+              run: ls -lrth 
             - name: Read the output file
-              run: cat cowsay.txt
+              run:  cat cowsay/cowsay.txt
