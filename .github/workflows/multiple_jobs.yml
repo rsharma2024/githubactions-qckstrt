@@ -22,13 +22,14 @@ jobs:
         needs: [build]
         runs-on: ubuntu-latest
         steps:
-        - name: Checking if cowsay output file exist
-          run: ls -lrth cowsay.txt
+
         - name: Download the artifact
           uses: actions/download-artifact@v4
           with:
             name: cowsay
             path: cowsay.txt
+        - name: Checking if cowsay output file exist
+          run: ls -lrth cowsay.txt            
     deploy:
         needs: [test]
         runs-on: ubuntu-latest
