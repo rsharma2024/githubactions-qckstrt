@@ -34,5 +34,10 @@ jobs:
         needs: [test]
         runs-on: ubuntu-latest
         steps:
+            - name: Downloading the artifacts
+              uses: actions/download-artifact@v4
+              with:
+                name: cowsay
+                path: cowsay.txt
             - name: Read the output file
               run: cat cowsay.txt
