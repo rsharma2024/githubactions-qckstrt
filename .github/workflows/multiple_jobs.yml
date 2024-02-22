@@ -1,1 +1,28 @@
+name: GitHub_Action_Multplejobs_Demo
+run-name: ${{ github.actor  }} is testing GitHub Action features 🚀
+on: [push]
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        steps:
+        - name: Installing cowsay program
+          run: sudo apt-get install cowsay -y
+        - name: Executing cowsay command
+          run: cowsay 'Installation Successfull' 
+        - name: Writing cowsay command output to a file  
+          run: cowsay 'Installation Successfull' >> cowsay.txt
+        - name: Sleeping for 30 sec
+          run: sleep 30  
 
+    test:
+        runs-on: ubuntu-latest
+        steps:
+        - name: Checking if cowsay output file exist
+          run: ls -lrth cowsay.txt
+        - name: Sleeping for 30 sec
+          run: sleep 30   
+    deploy:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Read the output file
+              run: cat cowsay.txt
