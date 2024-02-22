@@ -11,10 +11,12 @@ jobs:
           run: cowsay 'Installation Successfull' 
         - name: Writing cowsay command output to a file  
           run: cowsay 'Installation Successfull' >> cowsay.txt
+        
         - name: Sleeping for 30 sec
           run: sleep 30  
 
     test:
+        needs: [build]
         runs-on: ubuntu-latest
         steps:
         - name: Checking if cowsay output file exist
@@ -22,6 +24,7 @@ jobs:
         - name: Sleeping for 30 sec
           run: sleep 30   
     deploy:
+        needs: [test]
         runs-on: ubuntu-latest
         steps:
             - name: Read the output file
