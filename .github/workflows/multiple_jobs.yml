@@ -11,9 +11,12 @@ jobs:
           run: cowsay 'Installation Successfull' 
         - name: Writing cowsay command output to a file  
           run: cowsay 'Installation Successfull' >> cowsay.txt
-        
-        - name: Sleeping for 30 sec
-          run: sleep 30  
+        - name: Upload artifactory
+          uses: actions/upload-artifact@v4
+          with:
+            name: cowsay
+            path: cowsay.txt
+
 
     test:
         needs: [build]
@@ -21,8 +24,11 @@ jobs:
         steps:
         - name: Checking if cowsay output file exist
           run: ls -lrth cowsay.txt
-        - name: Sleeping for 30 sec
-          run: sleep 30   
+        - name: Download the artifact
+          uses: actions/download-artifact@v4
+          with:
+            name: cowsay
+            path: cowsay.txt
     deploy:
         needs: [test]
         runs-on: ubuntu-latest
