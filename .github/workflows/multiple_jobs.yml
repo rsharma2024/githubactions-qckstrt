@@ -44,4 +44,4 @@ jobs:
             - name: Changing to directory
               run: cd cowsay.txt   
             - name: Read the output file
-              run:  cat cowsay/cowsay.txt
+              run:  cat cowsay.txt
