@@ -41,5 +41,7 @@ jobs:
                 path: cowsay.txt
             - name: List the artifactory
               run: ls -lrth 
+            - name: Changing to directory
+              run: cd cowsay.txt   
             - name: Read the output file
               run:  cat cowsay/cowsay.txt
