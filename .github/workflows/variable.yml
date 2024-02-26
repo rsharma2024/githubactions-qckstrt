@@ -82,7 +82,7 @@
 
 ##### Defining Variable at Workflow level#####
 name: GitHub_Actions_Variable_Demo
-run-name: ${{ github.actor }} is testing GitHub Action features
+run-name: ${{ github.actor }} is testing GitHub Action features_GitHub_Variables
 on: [push]
 env:
     DOCKER_REGISTRY: docker.io
@@ -96,18 +96,18 @@ jobs:  # its a job
         runs-on: ubuntu-latest
         steps:
         - name: Docker Build
-          run: docker build -t ${{env.DOCKER_REGISTRY }}/${{ env.DOCKER_USERNAME }}/${{ env.IMAGE_NAME }}:latest
+          run: echo docker  build -t ${{env.DOCKER_REGISTRY }}/${{ env.DOCKER_USERNAME }}/${{ env.IMAGE_NAME }}:latest 
         # run: docker build -t $DOCKER_REGISTRY/$DOCKER_USERNAME/$IMAGE_NAME:latest
         - name: Docker Login        
-          run: docker login --username=${{ env.DOCKER_USERNAME }} --password=${{ env.DOCKER_PASSWORD }} 
+          run: echo docker login --username=${{ env.DOCKER_USERNAME }} --password=${{ env.DOCKER_PASSWORD }} 
 
         - name: Docker Publish
-          run: docker psuh ${{ env.DOCKER_REGISTRY }}/${{ env.DOCKER_USERNAME }}/${{ env.IMAGE_NAME }}:latest
+          run: echo docker psuh ${{ env.DOCKER_REGISTRY }}/${{ env.DOCKER_USERNAME }}/${{ env.IMAGE_NAME }}:latest
     
     deploy:  # Job name
         runs-on: ubuntu-latest
         steps:
         - name: Creating a container 
-          run: docker run -d -p 8080:80 ${{ env.DOCKER_REGISTRY }}/${{ env.DOCKER_USERNAME }}/${{ env.IMAGE_NAME }}:latest
+          run: echo docker run -d -p 8080:80 ${{ env.DOCKER_REGISTRY }}/${{ env.DOCKER_USERNAME }}/${{ env.IMAGE_NAME }}:latest
 
 
